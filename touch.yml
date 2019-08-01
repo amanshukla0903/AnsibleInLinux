@@ -1,6 +1,0 @@
----
-- hosts: KVIT
-  become: true
-  tasks:
-  - name: Create File
-    file: path=/root/testing.txt state=touch
