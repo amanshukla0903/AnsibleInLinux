@@ -1,0 +1,6 @@
+---
+- hosts: KVIT
+  become: true
+  tasks:
+  - name: Copy anything
+    copy: src=/root/aman.txt dest=/root/
