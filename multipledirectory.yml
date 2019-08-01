@@ -1,0 +1,11 @@
+---
+- hosts: KVIT
+  tasks:
+  - name: multiple directory
+    file:
+      path: "{{ item }}"
+      state: directory
+    with_items:
+      - '/root/v1'
+      - '/root/v2'
+      - '/root/v3'

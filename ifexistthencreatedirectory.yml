@@ -1,0 +1,21 @@
+---
+- name: "Creating multiple by checking folders"
+  hosts: KVIT
+  tasks:
+  - block:
+    - name: "Checking folders"
+      stat:
+       path: "{{item}}"
+      register: folder_stats
+      with_items:
+      - ["/root/v1","/root/v2","/root/v3"]
+    - name: "Creating multiple folders without disturbing previous permissions"
+      file:
+       path: "{{item.item}}"
+       state: directory
+       mode: 0000
+       group: root
+       owner: root
+      when: item.stat.exists == false
+      with_items:
+      - "{{folder_stats.results}}"

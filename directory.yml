@@ -1,0 +1,7 @@
+---
+- hosts: KVIT
+  become: true
+  tasks:
+  - name: Create Directory
+    file: path=/root/test state=directory mode=775 owner=root group=root
+
